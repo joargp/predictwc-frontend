@@ -3,11 +3,13 @@
       <div class="panel panel-primary" ng-repeat="group in groups">
         <div class="panel-heading">Group {{group.name}}</div>
         <div class="panel-body">
-            <ul>
-              <li ng-repeat="team in group.teams">
-                <flag-icon country="team" />
-                {{team.name}}
-            </ul>
+
+              <div ng-repeat="country in group.teams">
+                <flag-icon class="col-md-6" />
+                <div class="col-md-6">
+                  {{country.name}}
+                </div>
+              </div>
         </div>
       </div>
   </div>
