@@ -21,6 +21,10 @@ angular
         templateUrl: 'views/groups.html',
         controller: 'GroupsCtrl'
       })
+      .when('/countries', {
+        templateUrl: 'views/countries.html',
+        controller: 'CountriesCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

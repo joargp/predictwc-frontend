@@ -12,6 +12,17 @@ angular.module('predictwcApp')
               deferred.resolve(countries);
         });
         return deferred.promise;
+      },
+      add: function function_name(country) {
+        var deferred = $q.defer();
+        dpd.countries.post({ name : country.name,groupId : country.groupId,
+            flagCode : country.flagCode
+          }, function(result, err) {
+          //if(err) return console.log(err);
+          deferred.resolve(result);
+        });
+        return deferred.promise
       }
+
     };
   });
