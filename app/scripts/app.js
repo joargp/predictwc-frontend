@@ -25,6 +25,18 @@ angular
         templateUrl: 'views/countries.html',
         controller: 'CountriesCtrl'
       })
+      .when('/matches', {
+        templateUrl: 'views/matches.html',
+        controller: 'MatchesCtrl'
+      })
+      .when('/bets', {
+        templateUrl: 'views/bets.html',
+        controller: 'BetsCtrl'
+      })
+      .when('/winners', {
+        templateUrl: 'views/winners.html',
+        controller: 'WinnersCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

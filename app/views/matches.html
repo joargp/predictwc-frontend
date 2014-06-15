@@ -1,0 +1,63 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Add new match</div>
+  <div class="panel-body">
+    Home team
+    <select ng-model="match.homeTeamId" ng-options="country.id as country.name for country in countries">
+    </select>
+    Away team
+    <select ng-model="match.awayTeamId" ng-options="country.id as country.name for country in countries">
+    </select>
+    Start date:
+    <input type="date" class="input-medium" name="date" value="" ng-model="match.date">
+    Start time
+    <input type="time" class="input-medium" name="date" value="" ng-model="match.time">
+
+    <input type="button" name="sumbit" value="Add" ng-click="addMatch(match)" class="btn btn-primary">
+  </div>
+</div>
+<div class="table-responsive table-striped">
+  <table class="table table-striped">
+    <tr>
+      <th></td>
+      <th>Home Team</td>
+      <th>Away Team</th>
+      <th></th>
+      <td>
+        Start time
+      </td>
+      <td>
+        Actions
+      </td>
+      <td>
+
+      </td>
+    </tr>
+    <tr ng-repeat="match in matches">
+      <!-- <td>
+        <flag-icon country="match.homeTeam"/>
+      </td> -->
+      <td>
+        <div class="flag-wrapper animated bounceIn">
+          <div title="{{match.homeTeam.name}}" class="img-thumbnail flag flag-icon-background flag-icon-{{match.homeTeam.flagCode}}"></div>
+        </div>
+      </td>
+      <td>
+          {{match.homeTeam.name}}
+      </td>
+      <td>
+          {{match.awayTeam.name}}
+      </td>
+      <td>
+        <div class="flag-wrapper animated bounceIn">
+          <div title="{{match.awayTeam.name}}" class="img-thumbnail flag flag-icon-background flag-icon-{{match.awayTeam.flagCode}}"></div>
+        </div>
+      </td>
+      <td>
+          {{match.startTime}}
+      </td>
+      <td>
+
+      </td>
+    </tr>
+  </table>
+</div>
