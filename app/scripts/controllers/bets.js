@@ -8,13 +8,23 @@
  * Controller of the predictwcApp
  */
 angular.module('predictwcApp')
-  .controller('BetsCtrl', function ($scope, matches, bets) {
-    matches.getAll().then(function (data) {
-      $scope.matches = data;
+  .controller('BetsCtrl', function ($scope, matches, bets, users, dpd, _) {
+    matches.getAll().then(function (mItems) {
+      bets.getAll().then(function (bItems) {
+        users.getAll().then(function (uItems) {
+          bItems = _.forEach(bItems, function (bet) {
+            bet.username = _.find(uItems, { "id" : bet.userId }).username;
+            $scope.matches = _.forEach(mItems, function (match) {
+              match.bets = _.where(bItems, { 'matchId': match.id });
+            });
+          });
+        });
+      });
+
     });
+
     $scope.addBet = function function_name(match, home) {
       match.locked = true;
-      console.log(home);
       bets.add(match).then(function (bet) {
         //$scope.matches.unshift(data);
       });

@@ -49,6 +49,11 @@
       </td>
       <td>
           {{match.startTime}}
+          <div ng-repeat="bet in match.bets">
+            {{bet.username}}: {{bet.homeScore}} - {{bet.awayScore}}
+          </div>
+
+
       </td>
       <td>
         <input type="number" name="awayScore" ng-model="match.chosenAwayScore" ng-hide="match.locked">

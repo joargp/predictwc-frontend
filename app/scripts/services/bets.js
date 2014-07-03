@@ -12,7 +12,7 @@ angular.module('predictwcApp')
   return {
     getAll: function () {
       var deferred = $q.defer();
-      dpd.matches.get(function (items) {
+      dpd.bets.get(function (items) {
             deferred.resolve(items);
       });
       return deferred.promise;
