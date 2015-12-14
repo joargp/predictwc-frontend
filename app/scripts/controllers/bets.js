@@ -8,7 +8,8 @@
  * Controller of the predictwcApp
  */
 angular.module('predictwcApp')
-  .controller('BetsCtrl', function ($scope, matches, bets, users, dpd, _) {
+  .controller('BetsCtrl', function ($scope, matches, bets, users, dpd, _, isLoading) {
+    isLoading.set(true);
     matches.getAll().then(function (mItems) {
       bets.getAll().then(function (bItems) {
         users.getAll().then(function (uItems) {
@@ -17,6 +18,7 @@ angular.module('predictwcApp')
             $scope.matches = _.forEach(mItems, function (match) {
               match.bets = _.where(bItems, { 'matchId': match.id });
             });
+            isLoading.set(false);
           });
         });
       });

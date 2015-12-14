@@ -33,7 +33,7 @@ angular.module('predictwcApp')
       },
       update: function function_name(match) {
         var deferred = $q.defer();
-        dpd.matches.put(match.id, {homeScore: match.homeScore, awayScore: match.awayScore }, function(result, error)) {
+        dpd.matches.put(match.id, {homeScore: match.homeScore, awayScore: match.awayScore }, function(result, error) {
           deferred.resolve(result);
         });
         return deferred.promise

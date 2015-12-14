@@ -7,21 +7,21 @@
  * # loading
  */
 angular.module('predictwcApp')
-  .directive('loading',   ['$http' ,function ($http)
+  .directive('loading',   ['$http', 'isLoading' ,function ($http,isLoading)
     {
         return {
             restrict: 'A',
             link: function (scope, elm, attrs)
             {
                 scope.isLoading = function () {
-                    return $http.pendingRequests.length > 0;
+                    return isLoading.status() || $http.pendingRequests.length > 0;
                 };
 
                 scope.$watch(scope.isLoading, function (v)
                 {
-                    if(v){
+                    if (v) {
                         elm.show();
-                    }else{
+                    } else {
                         elm.hide();
                     }
                 });
